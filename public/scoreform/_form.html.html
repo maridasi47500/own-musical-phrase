@@ -1,0 +1,203 @@
+<%= form_with(model: fragment) do |form| %>
+  <% if fragment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(fragment.errors.count, "error") %> prohibited this fragment from being saved:</h2>
+
+      <ul>
+        <% fragment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :clef, style: "display: block" %> g, f
+    <%= form.text_field :clef %>
+  </div>
+
+  <div>
+    <%= form.label :nuance, style: "display: block" %> 
+<p>\ppppp, \pppp, \ppp, \pp, \p, \mp, \mf, \f, \ff, \fff, \ffff, \fffff, \fp, \sf, \sff, \sp, \spp, \sfz, \rfzet \n
+
+ et tu peux mélanger texte et nuance piuF = \markup { \italic più \dynamic f }
+<br>
+
+\layout { ragged-right = ##f }
+
+\relative c'' {
+  c2\f c-\piuF
+}</p>
+<p><a href="/scoreform/7c/lily-fbc128a2.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/7c/lily-fbc128a2.png"
+       alt="[image of music]"></a></p>
+<p>la nuance et le caractere
+
+
+    \markup {
+      \column {
+        \line {
+          \concat { 1 \super st }
+          movement
+        }
+        \line {
+          \concat { \dynamic p , }
+          \italic { con dolce espressione }
+        }
+      }
+    }
+</p>
+<p><a href="/scoreform/8f/lily-ea85f6e4.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/8f/lily-ea85f6e4.png"
+       alt="[image of music]"></a></p>
+    <%= form.text_field :nuance %>
+  </div>
+
+  <div>
+    <%= form.label :key_signature, style: "display: block" %> c major, d minor, f major etc.
+<p><a href="/scoreform/f9/lily-7cc64a7f.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/f9/lily-7cc64a7f.png"
+       alt="[image of music]"></a></p>
+<p><a href="/scoreform/f4/lily-5d4a28dc.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/f4/lily-5d4a28dc.png"
+       alt="[image of music]"></a></p>
+<p><a href="/scoreform/eb/lily-83409d15.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/eb/lily-83409d15.png"
+       alt="[image of music]"></a></p>
+    <%= form.text_field :key_signature %>
+  </div>
+
+  <div>
+    <%= form.label :time_signature, style: "display: block" %>
+ 4/4, 3/4, 6/8C, etc.
+<p><a href="/scoreform/00/lily-69f0cefb.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/00/lily-69f0cefb.png"
+       alt="[image of music]"></a></p>
+<p><a href="/scoreform/46/lily-520ebb9f.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/46/lily-520ebb9f.png"
+       alt="[image of music]"></a></p>
+    <%= form.text_field :time_signature %>
+  </div>
+
+  <div>
+    <%= form.label :caractere, style: "display: block" %>
+
+<p>
+    \markup {
+      \column {
+        \line {
+          \concat { 1 \super st }
+          movement
+        }
+        \line {
+          \concat { \dynamic p , }
+          \italic { con dolce espressione }
+        }
+      }
+    }
+
+</p>
+<p>
+"Terme italien 
+affettuoso 
+agitato 
+amabile 
+amoroso 
+appassionato 
+ardito 
+brillante 
+cantabile 
+capriccioso 
+comodo 
+con allegrezza 
+con anima 
+con bravura 
+con brio 
+con delicatezza 
+con dolore 
+con espressione 
+con fuoco 
+con grazia 
+con gusto 
+con moto 
+con spirito 
+con tenerezza 
+delicatamente 
+delicato 
+disperato 
+dolce 
+dolcissimo 
+doloroso 
+drammatico 
+energico 
+espressivo 
+furioso 
+giocoso 
+grazioso 
+imperioso 
+lagrimoso 
+leggero 
+maestoso 
+malinconico 
+mesto 
+nobile 
+patetico 
+pomposo 
+religioso 
+risoluto 
+rustico 
+scherzando 
+semplice 
+teneramente 
+tranquillo 
+tristamente
+
+</p>
+<p><a href="/scoreform/35/lily-05051c89.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/35/lily-05051c89.png"
+       alt="[image of music]"></a></p>
+
+    <%= form.text_field :caractere %>
+  </div>
+
+  <div>
+    <%= form.label :tempo, style: "display: block" %>
+<p><a href="/scoreform/a4/lily-f57ec71f.ly">
+  <img align="middle"
+       border="0"
+       src="/scoreform/a4/lily-f57ec71f.png"
+       alt="[image of music]"></a></p>
+Prestissimo, Vivace, "Andante", and "Largo" "Allegro" 4 = 100 (la noire à 100bpm)
+    <%= form.text_field :tempo %>
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :myscore, style: "display: block" %>
+    <%= form.text_field :myscore %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

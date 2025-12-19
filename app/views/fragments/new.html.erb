@@ -1,0 +1,11 @@
+<% content_for :title, "New fragment" %>
+
+<h1>New fragment</h1>
+
+<%= render "form", fragment: @fragment %>
+
+<br>
+
+<div>
+  <%= link_to "Back to fragments", fragments_path %>
+</div>
