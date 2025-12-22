@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @newscore %>
+
+<div>
+  <%= link_to "Edit this newscore", edit_newscore_path(@newscore) %> |
+  <%= link_to "Back to newscores", newscores_path %>
+
+  <%= button_to "Destroy this newscore", @newscore, method: :delete %>
+</div>

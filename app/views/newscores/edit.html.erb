@@ -1,0 +1,12 @@
+<% content_for :title, "Editing newscore" %>
+
+<h1>Editing newscore</h1>
+
+<%= render "form", newscore: @newscore %>
+
+<br>
+
+<div>
+  <%= link_to "Show this newscore", @newscore %> |
+  <%= link_to "Back to newscores", newscores_path %>
+</div>

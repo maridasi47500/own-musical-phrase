@@ -1,0 +1,97 @@
+<%= form_with(model: newscore) do |form| %>
+  <% if newscore.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(newscore.errors.count, "error") %> prohibited this newscore from being saved:</h2>
+
+      <ul>
+        <% newscore.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :composer, style: "display: block" %>
+    <%= form.text_field :composer %>
+  </div>
+
+  <div>
+    <%= form.label :toplevelmarkup, style: "display: block" %>
+    <%= form.text_field :toplevelmarkup %>
+  </div>
+
+  <div>
+    <%= form.label :metronomemark, style: "display: block" %>
+    <%= form.text_field :metronomemark %>
+  </div>
+
+  <div>
+    <%= form.label :textmark, style: "display: block" %>
+    <%= form.text_field :textmark %>
+  </div>
+
+  <div>
+    <%= form.label :cmajorsevensymbol, style: "display: block" %>
+    <%= form.text_field :cmajorsevensymbol %>
+  </div>
+
+  <div>
+    <%= form.label :testscript, style: "display: block" %>
+    <%= form.text_field :testscript %>
+  </div>
+
+  <div>
+    <%= form.label :notehead, style: "display: block" %>
+    <%= form.text_field :notehead %>
+  </div>
+
+  <div>
+    <%= form.label :fingering, style: "display: block" %>
+    <%= form.text_field :fingering %>
+  </div>
+
+  <div>
+    <%= form.label :notehead, style: "display: block" %>
+    <%= form.text_field :notehead %>
+  </div>
+
+  <div>
+    <%= form.label :rest, style: "display: block" %>
+    <%= form.text_field :rest %>
+  </div>
+
+  <div>
+    <%= form.label :tuplenumber, style: "display: block" %>
+    <%= form.text_field :tuplenumber %>
+  </div>
+
+  <div>
+    <%= form.label :lyrictext, style: "display: block" %>
+    <%= form.text_field :lyrictext %>
+  </div>
+
+  <div>
+    <%= form.label :dynamictext, style: "display: block" %>
+    <%= form.text_field :dynamictext %>
+  </div>
+
+  <div>
+    <%= form.label :key_signature, style: "display: block" %>
+    <%= form.text_field :key_signature %>
+  </div>
+
+  <div>
+    <%= form.label :time_signature, style: "display: block" %>
+    <%= form.text_field :time_signature %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

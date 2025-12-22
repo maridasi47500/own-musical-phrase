@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Newscores" %>
+
+<h1>Newscores</h1>
+
+<div id="newscores">
+  <% @newscores.each do |newscore| %>
+    <%= render newscore %>
+    <p>
+      <%= link_to "Show this newscore", newscore %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New newscore", new_newscore_path %>

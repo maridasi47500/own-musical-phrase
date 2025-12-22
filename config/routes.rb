@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :newscores do
+   member do
+    get "createscore"
+   end
+  end
   resources :fragments do
    member do
     get "createscore"

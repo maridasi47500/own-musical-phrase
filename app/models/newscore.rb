@@ -1,0 +1,2 @@
+class Newscore < ApplicationRecord
+end
