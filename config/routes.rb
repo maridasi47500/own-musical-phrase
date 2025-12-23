@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "welcome/search"
+  post "welcome/song"
   resources :pics
   resources :newscores do
    member do

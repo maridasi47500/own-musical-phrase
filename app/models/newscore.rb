@@ -28,7 +28,7 @@ dyn =
     \\new Staff {
       \\key #{key_signature.split(" ")[0]} \\#{key_signature.split(" ")[1]}
       \\numericTimeSignature
-      \\time 3/2
+      \\time #{time_signature}
       \\tempo \\markup \"#{metronomemark}\"
       \\textMark \"#{textmark}\"
       \\once \\override TupletNumber.text =

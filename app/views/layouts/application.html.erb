@@ -27,6 +27,8 @@ a, h1, p, strong {background: white;color:black;}
   </head>
 
   <body>
+<%=link_to "search for a song", welcome_search_path%>
+<%=link_to "new score with key, mode, bpm", new_fragment_path%>
 <%=link_to "new score with text added", new_newscore_path%>
     <%= yield %>
   </body>
