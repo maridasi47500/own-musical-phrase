@@ -3,6 +3,8 @@
 <%= render @fragment %>
 
 <div>
+<%=link_to "voir la partition", seescore_fragment_path(@fragment)%>
+
   <%= link_to "Edit this fragment", edit_fragment_path(@fragment) %> |
   <%= link_to "create score of this fragment", createscore_fragment_path(@fragment) %> |
   <%= link_to "Back to fragments", fragments_path %>

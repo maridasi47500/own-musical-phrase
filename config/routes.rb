@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+  resources :pics
   resources :newscores do
    member do
+    get "seescore"
     get "createscore"
+    get "addpic"
    end
   end
   resources :fragments do
    member do
     get "createscore"
+    get "seescore"
    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

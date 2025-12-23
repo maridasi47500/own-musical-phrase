@@ -1,8 +1,8 @@
-<p>pour faire : <p>
-<p><a href="/mynewscore/aa/lily-c1aa7316.ly">
+
+<p><a href="aa/lily-c1aa7316.ly">
   <img align="middle"
        border="0"
-       src="/mynewscore/aa/lily-c1aa7316.png"
+       src="aa/lily-c1aa7316.png"
        alt="[image of music]"></a></p>
 
 <%= form_with(model: newscore) do |form| %>
@@ -43,10 +43,6 @@
     <%= form.text_field :textmark %>
   </div>
 
-  <div>
-    <%= form.label :accord, "accord (a, b, c, d , e ou f)", style: "display: block" %>
-    <%= form.text_field :accord %>
-  </div>
   <div>
     <%= form.label :cmajorsevensymbol, style: "display: block" %>
     <%= form.text_field :cmajorsevensymbol %>
@@ -101,12 +97,6 @@
     <%= form.label :time_signature, style: "display: block" %>
     <%= form.text_field :time_signature %>
   </div>
-<%=form.fields_for :pic do |f|%>
-  <div>
-    <%= f.label :mypic, style: "display: block" %>
-    <%= f.file_field :mypic %>
-  </div>
-<%end%>
 
   <div>
     <%= form.submit %>

@@ -1,58 +1,18 @@
 class NewscoresController < ApplicationController
-  before_action :set_newscore, only: %i[ show edit update destroy createscore]
+  before_action :set_newscore, only: %i[ show edit update destroy createscore addpic seescore]
 
+  def seescore
+      hi=(@newscore.title+@newscore.id.to_s).parameterize
+      @hi=hi
+      render :createscore
+  end
   def createscore
- @score="
 
-      <lilypond staffsize=26>
-
-\header { title = \markup "Header" }
-
-dyn =
-#(make-dynamic-script #{ \markup \text "DynamicText" #})
-
-\markup \box "Top-level markup"
-
-\score {
-  <<
-    \new ChordNames
-    \with {
-      majorSevenSymbol = \markup "majorSevenSymbol"
-    }
-    \chordmode { c1:maj7 }
-    \new Staff {
-      \tempo \markup "MetronomeMark"
-      \textMark "textMark"
-      \once \override TupletNumber.text =
-        \markup "TupletNumber"
-      \tuplet 3/2 {
-        \once \override NoteHead.stencil =
-          #ly:text-interface::print
-        \once \override NoteHead.text =
-          \markup \lower #0.5 "NoteHead"
-        c''8^\markup \italic "TextScript"
-        a'\finger \markup \text "Fingering"
-        \once \override Rest.stencil =
-          #(lambda (grob)
-             (grob-interpret-markup grob #{
-               \markup  "Rest"
-               #}))
-        r
-      }
-    }
-    \new Lyrics \lyricmode {
-      \markup \smallCaps "LyricText" 1
-    }
-    \new Dynamics { s1\dyn }
-  >>
-}
-      </lilypond>
-      " 
-
+      @score=@newscore.getmyscore
       p @score
       
       wow="./public/uploads/"
-      hi=(@fragment.title+@fragment.id.to_s).parameterize
+      hi=(@newscore.title+@newscore.id.to_s).parameterize
       @hi=hi
       p wow+hi
       File.write(wow+"hey"+hi+".html", @score)
@@ -75,6 +35,10 @@ dyn =
 
   # GET /newscores/1/edit
   def edit
+  end
+  def addpic
+     @newscore.pic=Pic.new
+     render :edit
   end
 
   # POST /newscores or /newscores.json
@@ -123,6 +87,6 @@ dyn =
 
     # Only allow a list of trusted parameters through.
     def newscore_params
-      params.expect(newscore: [ :title, :composer, :toplevelmarkup, :metronomemark, :textmark, :cmajorsevensymbol, :testscript, :notehead, :fingering, :notehead, :rest, :tuplenumber, :lyrictext, :dynamictext, :key_signature, :time_signature ])
+      params.expect(newscore: [ :title, :composer, :toplevelmarkup, :metronomemark, :textmark, :cmajorsevensymbol, :testscript, :notehead, :fingering, :notehead, :rest, :tuplenumber, :lyrictext, :dynamictext, :key_signature, :time_signature, :accord, :pic_attributes=> {} ])
     end
 end

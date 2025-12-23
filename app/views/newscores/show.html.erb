@@ -3,6 +3,10 @@
 <%= render @newscore %>
 
 <div>
+<%=link_to "voir la partition", seescore_newscore_path(@newscore)%>
+
+  <%= link_to "add a pic to this new score", addpic_newscore_path(@newscore) %> |
+  <%= link_to "create a	 score for this new score", createscore_newscore_path(@newscore) %> |
   <%= link_to "Edit this newscore", edit_newscore_path(@newscore) %> |
   <%= link_to "Back to newscores", newscores_path %>
 

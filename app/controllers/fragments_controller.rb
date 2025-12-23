@@ -1,5 +1,12 @@
 class FragmentsController < ApplicationController
-  before_action :set_fragment, only: %i[ show edit update destroy createscore]
+  before_action :set_fragment, only: %i[ show edit update destroy createscore seescore]
+
+  def seescore
+      hi=(@fragment.title+@fragment.id.to_s).parameterize
+      @hi=hi
+
+      render :createscore
+  end
 
   # GET /fragments or /fragments.json
   def createscore

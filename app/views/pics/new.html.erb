@@ -1,0 +1,11 @@
+<% content_for :title, "New pic" %>
+
+<h1>New pic</h1>
+
+<%= render "form", pic: @pic %>
+
+<br>
+
+<div>
+  <%= link_to "Back to pics", pics_path %>
+</div>

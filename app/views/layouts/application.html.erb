@@ -20,9 +20,14 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+<%=yield :hey%>
+<style>
+a, h1, p, strong {background: white;color:black;}
+</style>
   </head>
 
   <body>
+<%=link_to "new score with text added", new_newscore_path%>
     <%= yield %>
   </body>
 </html>

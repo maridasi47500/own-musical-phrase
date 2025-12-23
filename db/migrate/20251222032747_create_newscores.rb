@@ -8,7 +8,6 @@ class CreateNewscores < ActiveRecord::Migration[8.0]
       t.string :textmark
       t.string :cmajorsevensymbol
       t.string :testscript
-      t.string :notehead
       t.string :fingering
       t.string :notehead
       t.string :rest

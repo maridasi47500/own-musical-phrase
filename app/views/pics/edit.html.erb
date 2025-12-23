@@ -1,0 +1,12 @@
+<% content_for :title, "Editing pic" %>
+
+<h1>Editing pic</h1>
+
+<%= render "form", pic: @pic %>
+
+<br>
+
+<div>
+  <%= link_to "Show this pic", @pic %> |
+  <%= link_to "Back to pics", pics_path %>
+</div>

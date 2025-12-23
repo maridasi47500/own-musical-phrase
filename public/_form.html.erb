@@ -1,10 +1,55 @@
-<%= form_with(model: fragment) do |form| %>
-  <% if fragment.errors.any? %>
+
+<lilypond staffsize=34>
+\header { title = \markup "Header" }
+
+dyn =
+#(make-dynamic-script #{ \markup \text "DynamicText" #})
+
+\markup \box "Top-level markup"
+
+\score {
+  <<
+    \new ChordNames
+    \with {
+      majorSevenSymbol = \markup "majorSevenSymbol"
+    }
+    \chordmode { c1:maj7 }
+    \new Staff {
+      \tempo \markup "MetronomeMark"
+      \textMark "textMark"
+      \once \override TupletNumber.text =
+        \markup "TupletNumber"
+      \tuplet 3/2 {
+        \once \override NoteHead.stencil =
+          #ly:text-interface::print
+        \once \override NoteHead.text =
+          \markup \lower #0.5 "NoteHead"
+        c''8^\markup \italic "TextScript"
+        a'\finger \markup \text "Fingering"
+        \once \override Rest.stencil =
+          #(lambda (grob)
+             (grob-interpret-markup grob #{
+               \markup  "Rest"
+               #}))
+        r
+      }
+    }
+    \new Lyrics \lyricmode {
+      \markup \smallCaps "LyricText" 1
+    }
+    \new Dynamics { s1\dyn }
+  >>
+}
+
+</lilypond>
+
+<%= form_with(model: newscore) do |form| %>
+  <% if newscore.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(fragment.errors.count, "error") %> prohibited this fragment from being saved:</h2>
+      <h2><%= pluralize(newscore.errors.count, "error") %> prohibited this newscore from being saved:</h2>
 
       <ul>
-        <% fragment.errors.each do |error| %>
+        <% newscore.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -12,215 +57,83 @@
   <% end %>
 
   <div>
-    <%= form.label :clef, style: "display: block" %> g, f
-    <%= form.text_field :clef %>
-  </div>
-
-  <div>
-    <%= form.label :nuance, style: "display: block" %> 
-<p>\ppppp, \pppp, \ppp, \pp, \p, \mp, \mf, \f, \ff, \fff, \ffff, \fffff, \fp, \sf, \sff, \sp, \spp, \sfz, \rfzet \n
-
- et tu peux mélanger texte et nuance piuF = \markup { \italic più \dynamic f }
-<br>
-
-\layout { ragged-right = ##f }
-
-\relative c'' {
-  c2\f c-\piuF
-}</p>
-<lilypond fragment staffsize=36>
-  \key c \major
-  \time 4/4
-  \tempo 4=100
-
-  % En avant la musique.
- a b c d e f g
-
-\lyricmode {
-\markup { \italic più \dynamic f }} a b c d e
-  a\ppppp a\pppp a\ppp a\pp a\p a\mp a\mf a\f a\ff a\fff a\ffff a\fffff a\fp a\sf a\sff a\sp a
-</lilypond>
-<p>la nuance et le caractere
-
-
-    \markup {
-      \column {
-        \line {
-          \concat { 1 \super st }
-          movement
-        }
-        \line {
-          \concat { \dynamic p , }
-          \italic { con dolce espressione }
-        }
-      }
-    }
-</p>
-<lilypond fragment staffsize=30>
-  \key c \major
-  \time 4/4
-  \tempo 4=100
-  a 
-  #(make-dynamic-script
-#{
-\markup {
-con dolce espressione \dynamic
-p
-}
-#}) a4 b c d8 a b c d  
-</lilypond>
-    <%= form.text_field :nuance %>
-  </div>
-
-  <div>
-    <%= form.label :key_signature, style: "display: block" %> c major, d minor, f major etc.
-<lilypond fragment staffsize=30>
-  \key c \major
-  \time 4/4
-a4 d8 b c d  
-</lilypond>
-<lilypond fragment staffsize=30>
-  \key e \minor
-  \time 4/4
-a4 d8 b c d  
-</lilypond>
-<lilypond fragment staffsize=30>
-  \key f \major
-  \time 4/4
-a4 d8 b c d  
-</lilypond>
-    <%= form.text_field :key_signature %>
-  </div>
-
-  <div>
-    <%= form.label :time_signature, style: "display: block" %>
- 4/4, 3/4, 6/8C, etc.
-<lilypond fragment staffsize=30>
-  \key f \major
-  \time 3/4
-a4 d8 bes c d  
-</lilypond>
-<lilypond fragment staffsize=30>
-  \key f \major
-  \time 6/8
-a4. d8. bes16 c d  
-</lilypond>
-    <%= form.text_field :time_signature %>
-  </div>
-
-  <div>
-    <%= form.label :caractere, style: "display: block" %>
-
-<p>
-    \markup {
-      \column {
-        \line {
-          \concat { 1 \super st }
-          movement
-        }
-        \line {
-          \concat { \dynamic p , }
-          \italic { con dolce espressione }
-        }
-      }
-    }
-
-</p>
-<p>
-"Terme italien 
-affettuoso 
-agitato 
-amabile 
-amoroso 
-appassionato 
-ardito 
-brillante 
-cantabile 
-capriccioso 
-comodo 
-con allegrezza 
-con anima 
-con bravura 
-con brio 
-con delicatezza 
-con dolore 
-con espressione 
-con fuoco 
-con grazia 
-con gusto 
-con moto 
-con spirito 
-con tenerezza 
-delicatamente 
-delicato 
-disperato 
-dolce 
-dolcissimo 
-doloroso 
-drammatico 
-energico 
-espressivo 
-furioso 
-giocoso 
-grazioso 
-imperioso 
-lagrimoso 
-leggero 
-maestoso 
-malinconico 
-mesto 
-nobile 
-patetico 
-pomposo 
-religioso 
-risoluto 
-rustico 
-scherzando 
-semplice 
-teneramente 
-tranquillo 
-tristamente
-
-</p>
-<lilypond fragment staffsize=30>
-  \key f \major
-  \time 6/8
-a4. d8. bes16 c d  
-
-
- #(make-dynamic-script
-#{
-\markup {
-tristamente
-p
-}
-#}) 
-</lilypond>
-
-    <%= form.text_field :caractere %>
-  </div>
-
-  <div>
-    <%= form.label :tempo, style: "display: block" %>
-<lilypond fragment staffsize=30>
-  \key f \major
-  \tempo "Allegro" 4 = 100
-  \time 6/8
-a4. d8. bes16 c d  
-
-</lilypond>
-Prestissimo, Vivace, "Andante", and "Largo" "Allegro" 4 = 100 (la noire à 100bpm)
-    <%= form.text_field :tempo %>
-  </div>
-
-  <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
   <div>
-    <%= form.label :myscore, style: "display: block" %>
-    <%= form.text_field :myscore %>
+    <%= form.label :composer, style: "display: block" %>
+    <%= form.text_field :composer %>
+  </div>
+
+  <div>
+    <%= form.label :toplevelmarkup, style: "display: block" %>
+    <%= form.text_field :toplevelmarkup %>
+  </div>
+
+  <div>
+    <%= form.label :metronomemark, style: "display: block" %>
+    <%= form.text_field :metronomemark %>
+  </div>
+
+  <div>
+    <%= form.label :textmark, style: "display: block" %>
+    <%= form.text_field :textmark %>
+  </div>
+
+  <div>
+    <%= form.label :cmajorsevensymbol, style: "display: block" %>
+    <%= form.text_field :cmajorsevensymbol %>
+  </div>
+
+  <div>
+    <%= form.label :testscript, style: "display: block" %>
+    <%= form.text_field :testscript %>
+  </div>
+
+  <div>
+    <%= form.label :notehead, style: "display: block" %>
+    <%= form.text_field :notehead %>
+  </div>
+
+  <div>
+    <%= form.label :fingering, style: "display: block" %>
+    <%= form.text_field :fingering %>
+  </div>
+
+  <div>
+    <%= form.label :notehead, style: "display: block" %>
+    <%= form.text_field :notehead %>
+  </div>
+
+  <div>
+    <%= form.label :rest, style: "display: block" %>
+    <%= form.text_field :rest %>
+  </div>
+
+  <div>
+    <%= form.label :tuplenumber, style: "display: block" %>
+    <%= form.text_field :tuplenumber %>
+  </div>
+
+  <div>
+    <%= form.label :lyrictext, style: "display: block" %>
+    <%= form.text_field :lyrictext %>
+  </div>
+
+  <div>
+    <%= form.label :dynamictext, style: "display: block" %>
+    <%= form.text_field :dynamictext %>
+  </div>
+
+  <div>
+    <%= form.label :key_signature, style: "display: block" %>
+    <%= form.text_field :key_signature %>
+  </div>
+
+  <div>
+    <%= form.label :time_signature, style: "display: block" %>
+    <%= form.text_field :time_signature %>
   </div>
 
   <div>
