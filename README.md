@@ -6,4 +6,5 @@
 ![alt text](newscore3.png)
 ![alt text](newscore4.png)
 ![alt text](newscore5.png)
+![alt text](newscore6.png)
 
