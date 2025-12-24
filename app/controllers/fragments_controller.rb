@@ -18,7 +18,7 @@ class FragmentsController < ApplicationController
         \\time #{@fragment.time_signature}
         \\tempo #{@fragment.tempo}
         
-        c'4 \#(make-dynamic-script \#{ \\markup { \\dynamic #{@fragment.nuance} \\normal-text \\italic \\bold #{@fragment.caractere} } \#})  d' e' f' g'2 g'
+        #(make-dynamic-script \#{ \\markup { \\dynamic #{@fragment.nuance} \\normal-text \\italic \\bold #{@fragment.caractere} } \#}) #{@fragment.myscore} d' e' f' g'2 g'
       </lilypond>
       "
       
