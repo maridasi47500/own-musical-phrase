@@ -87,6 +87,6 @@ class NewscoresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def newscore_params
-      params.expect(newscore: [ :title, :composer, :toplevelmarkup, :metronomemark, :textmark, :cmajorsevensymbol, :testscript, :notehead, :fingering, :notehead, :rest, :tuplenumber, :lyrictext, :dynamictext, :key_signature, :time_signature, :accord, :pic_attributes=> {} ])
+      params.expect(newscore: [ :title, :composer, :toplevelmarkup, :metronomemark, :textmark, :cmajorsevensymbol, :testscript, :notehead, :fingering, :notehead, :rest, :tuplenumber, :lyrictext, :dynamictext, :key_signature, :time_signature, :accord, :myscore, :pic_attributes=> {} ])
     end
 end

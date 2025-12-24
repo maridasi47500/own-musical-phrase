@@ -101,6 +101,10 @@
     <%= form.label :time_signature, style: "display: block" %>
     <%= form.text_field :time_signature %>
   </div>
+  <div>
+    <%= form.label :myscore, style: "display: block" %>
+    <%= form.text_area :myscore, style: "width:100%;height: 500px;" %>
+  </div>
 <%=form.fields_for :pic do |f|%>
   <div>
     <%= f.label :mypic, style: "display: block" %>

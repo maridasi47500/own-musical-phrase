@@ -41,7 +41,7 @@ dyn =
       majorSevenSymbol = \\markup \"#{cmajorsevensymbol}\"
     }
     \\chordmode { #{accord}1:maj7 }
-    \\new Staff {
+    \\new StafStafff = \"newviolin\" {
       \\key #{key_signature.split(" ")[0]} \\#{key_signature.split(" ")[1]}
       \\numericTimeSignature
       \\time #{time_signature}
@@ -49,6 +49,7 @@ dyn =
       \\textMark \"#{textmark}\"
       \\once \\override TupletNumber.text =
         \\markup \"#{tuplenumber}\"
+      #{myscore}
       \\tuplet 3/2 {
         \\once \\override NoteHead.stencil =
           \#ly:text-interface::print
