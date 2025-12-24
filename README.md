@@ -7,6 +7,5 @@
 ![alt text](newscore4.png)
 ![alt text](newscore5.png)
 ![alt text](newscore6.png)
-![alt text](newscore7.png)
 ![alt text](newscore8.png)
 
